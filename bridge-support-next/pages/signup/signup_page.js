@@ -11,9 +11,15 @@ import {
   Checkbox,
   Container,
 } from '@nextui-org/react';
+import { useForm } from "react-hook-form";
 
 const Signup = () => {
-  const { register, handleSubmit } = useForm();
+  const { 
+    register, 
+    handleSubmit, 
+    formState 
+  } = useForm();
+
   const inputItems = [
     "Name",
     "Email",
@@ -45,11 +51,22 @@ const Signup = () => {
             BridgeSupport サインアップ
           </Text>
           <Spacer y={1} />
-          <form>
+          <form onSubmit={handleSubmit((data) => {
+            console.log(data);
+          })}
+          >
           {
             inputItems.map(item => {
               return <InputItem
                       placeholder={ item } 
+                      register={
+                        register(`${item}`),
+                        {
+                          required:true
+                        }
+                      }
+                      errors={formState.errors}
+                      errorMessage="This is required"
                       />
             })
           }
@@ -73,7 +90,8 @@ const Signup = () => {
   );
 }
 
-const InputItem = ({placeholder}) => {
+const InputItem = ({placeholder, register, errors, errorMessage}) => {
+
   return(
     <>
     <Input
@@ -85,7 +103,9 @@ const InputItem = ({placeholder}) => {
       placeholder={placeholder}
       id={`obj_${placeholder}`}
       css={{ mb: '6px' }}
+      {...register}
     />
+    {/* { `errors.${placeholder}` && <p>{errorMessage}</p>} */}
     <Spacer y={1} />
     </>
   )
