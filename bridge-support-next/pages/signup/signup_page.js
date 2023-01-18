@@ -16,8 +16,7 @@ import { useForm } from "react-hook-form";
 const Signup = () => {
   const { 
     register, 
-    handleSubmit, 
-    formState 
+    handleSubmit
   } = useForm();
 
   const inputItems = [
@@ -65,8 +64,6 @@ const Signup = () => {
                           required:true
                         }
                       }
-                      errors={formState.errors}
-                      errorMessage="This is required"
                       />
             })
           }
@@ -90,7 +87,7 @@ const Signup = () => {
   );
 }
 
-const InputItem = ({placeholder, register, errors, errorMessage}) => {
+const InputItem = ({placeholder, register}) => {
 
   return(
     <>
@@ -105,7 +102,6 @@ const InputItem = ({placeholder, register, errors, errorMessage}) => {
       css={{ mb: '6px' }}
       {...register}
     />
-    {/* { `errors.${placeholder}` && <p>{errorMessage}</p>} */}
     <Spacer y={1} />
     </>
   )
