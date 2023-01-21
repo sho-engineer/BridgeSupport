@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { checkPwConfirmation } from "./login.hooks";
 import Link from 'next/link';
 import {
@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 const Signup = () => {
   const { 
     register, 
-    handleSubmit
+    handleSubmit, 
   } = useForm();
 
   const inputItems = [
@@ -25,10 +25,6 @@ const Signup = () => {
     "Password",
     "Password Confirmation"
   ]
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <>
@@ -59,10 +55,7 @@ const Signup = () => {
               return <InputItem
                       placeholder={ item } 
                       register={
-                        register(`${item}`),
-                        {
-                          required:true
-                        }
+                        register(`${item}`)
                       }
                       />
             })
