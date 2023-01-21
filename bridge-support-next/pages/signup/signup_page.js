@@ -6,12 +6,12 @@ import {
   Spacer,
   Button,
   Text,
-  Input,
   Row,
   Checkbox,
   Container,
 } from '@nextui-org/react';
 import { useForm } from "react-hook-form";
+import InputItem from '../../components/InputItem';
 
 const Signup = () => {
   const { 
@@ -78,26 +78,6 @@ const Signup = () => {
       </Container>
     </>
   );
-}
-
-const InputItem = ({placeholder, register}) => {
-
-  return(
-    <>
-    <Input
-      clearable
-      underlined
-      fullWidth
-      color="primary"
-      size="lg"
-      placeholder={placeholder}
-      id={`obj_${placeholder}`}
-      css={{ mb: '6px' }}
-      {...register}
-    />
-    <Spacer y={1} />
-    </>
-  )
 }
 
 export default Signup;
