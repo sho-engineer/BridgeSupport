@@ -3,7 +3,7 @@ import {
   Spacer
 } from "@nextui-org/react";
 
-const InputItem = ({ placeholder }: { placeholder: string} , {register}: { register: any }) => {
+const InputItem = ({ placeholder }: { placeholder: string}) => {
 
   return(
     <>
@@ -16,7 +16,6 @@ const InputItem = ({ placeholder }: { placeholder: string} , {register}: { regis
       placeholder={placeholder}
       id={`obj_${placeholder}`}
       css={{ mb: '6px' }}
-      {...register}
     />
     <Spacer y={1} />
     </>
